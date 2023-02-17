@@ -16,6 +16,7 @@ class StartScreen: UIViewController {
     let forgottenPasswordButton = UIButton()
     let newAccountButton = UIButton()
     let metaLogo = UIImageView()
+    let tabBar = UITabBarController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,11 @@ class StartScreen: UIViewController {
         setUpFrgtPBtn()
         newAccBtn()
         setUpMetaLogo()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.view.endEditing(true)
     }
 
     private func sublayer(){
@@ -65,11 +71,10 @@ class StartScreen: UIViewController {
         nameTF.borderStyle = .roundedRect
         nameTF.backgroundColor = .lightGray
         nameTF.clearButtonMode = .whileEditing
-        
+
         nameTF.leftView?.frame = CGRect(x: 0, y: 0, width: 20, height: 50)
         nameTF.leftView = textFieldImage(imageName: "person.fill")
         nameTF.leftViewMode = .always
-        
         
         nameTF.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -101,6 +106,10 @@ class StartScreen: UIViewController {
             passwordTF.widthAnchor.constraint(equalToConstant: 300),
             passwordTF.heightAnchor.constraint(equalToConstant: 50)
         ])
+        
+        passwordTF.rightView = eyeBtn()
+        passwordTF.rightViewMode = .whileEditing
+        
         passwordTF.delegate = self
         passwordTF.isSecureTextEntry = true
     }
@@ -135,10 +144,7 @@ class StartScreen: UIViewController {
             forgottenPasswordButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         
-        passwordTF.rightView = eyeBtn()
-        passwordTF.rightViewMode = .whileEditing
-        
-        passwordTF.addTarget(self, action: #selector(passForgottenAction), for: .touchUpInside)
+        forgottenPasswordButton.addTarget(self, action: #selector(passForgottenAction), for: .touchUpInside)
     }
     
     
@@ -208,14 +214,37 @@ class StartScreen: UIViewController {
             passwordTF.becomeFirstResponder()
         }
         else{
-          let screen = SecondScreen()
-            navigationController?.pushViewController(screen, animated: true)
+          //let screen = SecondScreen()
+           setupTabBar()
         }
     }
     
     @objc func passForgottenAction(){
         let screen = PassForgottenVC()
         navigationController?.pushViewController(screen, animated: true)
+        
+    }
+    
+    func setupTabBar(){
+        
+        let t1 = UINavigationController(rootViewController: HomeController())
+        let t2 = UINavigationController(rootViewController:MyAccountController())
+        let t3 = UINavigationController(rootViewController:SettingController())
+        let t4 = UINavigationController(rootViewController:HelpController())
+        
+        
+        
+        t1.tabBarItem = UITabBarItem(title: "Home", image:UIImage(systemName: "house") , tag: 0)
+        t2.tabBarItem = UITabBarItem(title: "My Account", image: UIImage(systemName: "person"), tag: 1)
+        t3.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), tag: 2)
+        t4.tabBarItem = UITabBarItem(title: "Help", image:UIImage(systemName: "exclamationmark.circle") , tag: 3)
+        
+        tabBar.setViewControllers([t1,t2,t3,t4], animated: false)
+        tabBar.modalPresentationStyle = .fullScreen
+        tabBar.tabBar.backgroundColor = .lightGray
+        tabBar.tabBarItem.image = UIImage(systemName: "person")
+        tabBar.tabBar.itemPositioning = .centered
+        present(tabBar, animated: true)
     }
     
 }
