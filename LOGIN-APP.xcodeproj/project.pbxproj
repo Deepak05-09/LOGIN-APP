@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07D75CCD29AF85EC0082A4A5 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D75CCC29AF85EC0082A4A5 /* HomeController.swift */; };
+		07D75CCF29AF86290082A4A5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D75CCE29AF86290082A4A5 /* Post.swift */; };
 		1BD45B9D299D0070004A624C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD45B9C299D0070004A624C /* AppDelegate.swift */; };
 		1BD45B9F299D0070004A624C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD45B9E299D0070004A624C /* SceneDelegate.swift */; };
 		1BD45BA1299D0070004A624C /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD45BA0299D0070004A624C /* StartScreen.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07D75CCC29AF85EC0082A4A5 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		07D75CCE29AF86290082A4A5 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		1BD45B99299D0070004A624C /* LOGIN-APP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LOGIN-APP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BD45B9C299D0070004A624C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BD45B9E299D0070004A624C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				1BD45BA0299D0070004A624C /* StartScreen.swift */,
 				1BD45BB2299E2F13004A624C /* PassForgottenVC.swift */,
 				1BD45BB0299E22D6004A624C /* SecondScreen.swift */,
+				07D75CCC29AF85EC0082A4A5 /* HomeController.swift */,
+				07D75CCE29AF86290082A4A5 /* Post.swift */,
 				1BD45BA5299D0072004A624C /* Assets.xcassets */,
 				1BD45BA7299D0072004A624C /* LaunchScreen.storyboard */,
 				1BD45BAA299D0072004A624C /* Info.plist */,
@@ -142,8 +148,10 @@
 			files = (
 				1BD45BA1299D0070004A624C /* StartScreen.swift in Sources */,
 				1BD45BB1299E22D6004A624C /* SecondScreen.swift in Sources */,
+				07D75CCD29AF85EC0082A4A5 /* HomeController.swift in Sources */,
 				1BD45B9D299D0070004A624C /* AppDelegate.swift in Sources */,
 				1BD45BB3299E2F13004A624C /* PassForgottenVC.swift in Sources */,
+				07D75CCF29AF86290082A4A5 /* Post.swift in Sources */,
 				1BD45B9F299D0070004A624C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

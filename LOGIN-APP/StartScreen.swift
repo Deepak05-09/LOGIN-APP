@@ -71,11 +71,14 @@ class StartScreen: UIViewController {
         nameTF.borderStyle = .roundedRect
         nameTF.backgroundColor = .lightGray
         nameTF.clearButtonMode = .whileEditing
-
-        nameTF.leftView?.frame = CGRect(x: 0, y: 0, width: 20, height: 50)
-        nameTF.leftView = textFieldImage(imageName: "person.fill")
-        nameTF.leftViewMode = .always
         
+        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 50))
+        image.image = UIImage(systemName: "person.fill")
+        image.backgroundColor = .blue
+        nameTF.leftView = image
+        //nameTF.leftView?.frame = CGRect(x: 0, y: 0, width: 20, height: 50)
+        nameTF.leftViewMode = .always
+       
         nameTF.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             nameTF.topAnchor.constraint(equalTo: logoImage.bottomAnchor,constant: 100),
@@ -85,6 +88,32 @@ class StartScreen: UIViewController {
         ])
         nameTF.delegate = self
     }
+    
+//    func call()->UIImage{
+//        // Load the original image
+//        let originalImage = UIImage(systemName: "person.fill")!
+//
+//        // Set the desired padding size
+//        let padding = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+//
+//        // Calculate the size of the new image
+//        let newSize = CGSize(width: originalImage.size.width + padding.left + padding.right,
+//                              height: originalImage.size.height + padding.top + padding.bottom)
+//
+//        // Create a new image context with the desired size
+//        UIGraphicsBeginImageContextWithOptions(newSize, false, originalImage.scale)
+//
+//        // Draw the original image with padding in the new image context
+//        let imageRect = CGRect(x: padding.left, y: padding.top, width: originalImage.size.width, height: originalImage.size.height)
+//        originalImage.draw(in: imageRect)
+//
+//        // Get the new image from the image context
+//        let paddedImage = UIGraphicsGetImageFromCurrentImageContext()
+//
+//        // End the image context
+//        UIGraphicsEndImageContext()
+//        return paddedImage!
+//    }
     
     private func setUpPasswordTF(){
         view.addSubview(passwordTF)
@@ -123,7 +152,7 @@ class StartScreen: UIViewController {
         logInButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             logInButton.topAnchor.constraint(equalTo: passwordTF.bottomAnchor,constant: 20),
-           logInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 50),
+            logInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 50),
             logInButton.widthAnchor.constraint(equalToConstant: 300),
             logInButton.heightAnchor.constraint(equalToConstant: 50)
         ])
@@ -139,7 +168,7 @@ class StartScreen: UIViewController {
         forgottenPasswordButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             forgottenPasswordButton.topAnchor.constraint(equalTo: logInButton.bottomAnchor,constant: 10),
-          forgottenPasswordButton.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 50),
+            forgottenPasswordButton.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 50),
             forgottenPasswordButton.widthAnchor.constraint(equalToConstant: 300),
             forgottenPasswordButton.heightAnchor.constraint(equalToConstant: 50)
         ])
@@ -160,7 +189,7 @@ class StartScreen: UIViewController {
         newAccountButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             newAccountButton.topAnchor.constraint(equalTo: forgottenPasswordButton.bottomAnchor,constant: 100),
-          newAccountButton.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 50),
+            newAccountButton.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 50),
             newAccountButton.widthAnchor.constraint(equalToConstant: 300),
             newAccountButton.heightAnchor.constraint(equalToConstant: 50)
         ])
@@ -227,24 +256,26 @@ class StartScreen: UIViewController {
     
     func setupTabBar(){
         
-        let t1 = UINavigationController(rootViewController: HomeController())
-        let t2 = UINavigationController(rootViewController:MyAccountController())
-        let t3 = UINavigationController(rootViewController:SettingController())
-        let t4 = UINavigationController(rootViewController:HelpController())
+        
+        let t1 =  HomeController()
+        let t2 = MyAccountController()
+        let t3 = SettingController()
+        let t4 = HelpController()
+        let t5 =  AccountController()
         
         
-        
-        t1.tabBarItem = UITabBarItem(title: "Home", image:UIImage(systemName: "house") , tag: 0)
-        t2.tabBarItem = UITabBarItem(title: "My Account", image: UIImage(systemName: "person"), tag: 1)
-        t3.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), tag: 2)
-        t4.tabBarItem = UITabBarItem(title: "Help", image:UIImage(systemName: "exclamationmark.circle") , tag: 3)
-        
-        tabBar.setViewControllers([t1,t2,t3,t4], animated: false)
+        t1.tabBarItem = UITabBarItem(title: "", image:UIImage(systemName: "house") , tag: 0)
+        t2.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "magnifyingglass"), tag: 1)
+        t3.tabBarItem = UITabBarItem(title: "", image:UIImage(systemName: "plus.app"), tag: 2)
+        t4.tabBarItem = UITabBarItem(title: "", image:UIImage(systemName: "livephoto.play") , tag: 3)
+        t5.tabBarItem = UITabBarItem(title: "Account", image: UIImage(systemName: "person.crop.circle.fill"), tag: 4)
+
+        tabBar.setViewControllers([t1,t2,t3,t4,t5], animated: false)
         tabBar.modalPresentationStyle = .fullScreen
         tabBar.tabBar.backgroundColor = .lightGray
-        tabBar.tabBarItem.image = UIImage(systemName: "person")
-        tabBar.tabBar.itemPositioning = .centered
+        
         present(tabBar, animated: true)
+        
     }
     
 }
