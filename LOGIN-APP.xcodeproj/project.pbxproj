@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		07D75CCD29AF85EC0082A4A5 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D75CCC29AF85EC0082A4A5 /* HomeController.swift */; };
 		07D75CCF29AF86290082A4A5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D75CCE29AF86290082A4A5 /* Post.swift */; };
+		07E3BC0329E6B968008B8EFB /* ReelsVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3BC0229E6B968008B8EFB /* ReelsVideo.swift */; };
+		07E3BC0529E6BB52008B8EFB /* ReelsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3BC0429E6BB52008B8EFB /* ReelsController.swift */; };
+		07E3BC0729E6CDD1008B8EFB /* CoustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3BC0629E6CDD1008B8EFB /* CoustomCell.swift */; };
+		07E3BC0929E6CE2F008B8EFB /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3BC0829E6CE2F008B8EFB /* Search.swift */; };
 		1BD45B9D299D0070004A624C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD45B9C299D0070004A624C /* AppDelegate.swift */; };
 		1BD45B9F299D0070004A624C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD45B9E299D0070004A624C /* SceneDelegate.swift */; };
 		1BD45BA1299D0070004A624C /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD45BA0299D0070004A624C /* StartScreen.swift */; };
@@ -21,6 +25,10 @@
 /* Begin PBXFileReference section */
 		07D75CCC29AF85EC0082A4A5 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		07D75CCE29AF86290082A4A5 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		07E3BC0229E6B968008B8EFB /* ReelsVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelsVideo.swift; sourceTree = "<group>"; };
+		07E3BC0429E6BB52008B8EFB /* ReelsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelsController.swift; sourceTree = "<group>"; };
+		07E3BC0629E6CDD1008B8EFB /* CoustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoustomCell.swift; sourceTree = "<group>"; };
+		07E3BC0829E6CE2F008B8EFB /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		1BD45B99299D0070004A624C /* LOGIN-APP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LOGIN-APP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BD45B9C299D0070004A624C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BD45B9E299D0070004A624C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +77,10 @@
 				1BD45BB0299E22D6004A624C /* SecondScreen.swift */,
 				07D75CCC29AF85EC0082A4A5 /* HomeController.swift */,
 				07D75CCE29AF86290082A4A5 /* Post.swift */,
+				07E3BC0229E6B968008B8EFB /* ReelsVideo.swift */,
+				07E3BC0429E6BB52008B8EFB /* ReelsController.swift */,
+				07E3BC0629E6CDD1008B8EFB /* CoustomCell.swift */,
+				07E3BC0829E6CE2F008B8EFB /* Search.swift */,
 				1BD45BA5299D0072004A624C /* Assets.xcassets */,
 				1BD45BA7299D0072004A624C /* LaunchScreen.storyboard */,
 				1BD45BAA299D0072004A624C /* Info.plist */,
@@ -146,12 +158,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07E3BC0929E6CE2F008B8EFB /* Search.swift in Sources */,
 				1BD45BA1299D0070004A624C /* StartScreen.swift in Sources */,
 				1BD45BB1299E22D6004A624C /* SecondScreen.swift in Sources */,
 				07D75CCD29AF85EC0082A4A5 /* HomeController.swift in Sources */,
 				1BD45B9D299D0070004A624C /* AppDelegate.swift in Sources */,
 				1BD45BB3299E2F13004A624C /* PassForgottenVC.swift in Sources */,
+				07E3BC0329E6B968008B8EFB /* ReelsVideo.swift in Sources */,
+				07E3BC0529E6BB52008B8EFB /* ReelsController.swift in Sources */,
 				07D75CCF29AF86290082A4A5 /* Post.swift in Sources */,
+				07E3BC0729E6CDD1008B8EFB /* CoustomCell.swift in Sources */,
 				1BD45B9F299D0070004A624C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,13 +305,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VTN9V7QDN2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "LOGIN-APP/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -303,6 +322,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Deepak.LOGIN-APP";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -314,13 +334,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VTN9V7QDN2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "LOGIN-APP/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -328,6 +351,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Deepak.LOGIN-APP";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

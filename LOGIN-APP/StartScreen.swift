@@ -233,19 +233,20 @@ class StartScreen: UIViewController {
     
     @objc func loginAction(){
         
-        if nameTF.text?.count==0 && passwordTF.text?.count==0{
-            nameTF.becomeFirstResponder()
-        }
-        else if nameTF.text?.count==0{
-            nameTF.becomeFirstResponder()
-        }
-        else if passwordTF.text?.count==0{
-            passwordTF.becomeFirstResponder()
-        }
-        else{
-          //let screen = SecondScreen()
-           setupTabBar()
-        }
+//        if nameTF.text?.count==0 && passwordTF.text?.count==0{
+//            nameTF.becomeFirstResponder()
+//        }
+//        else if nameTF.text?.count==0{
+//            nameTF.becomeFirstResponder()
+//        }
+//        else if passwordTF.text?.count==0{
+//            passwordTF.becomeFirstResponder()
+//        }
+//        else{
+//          //let screen = SecondScreen()
+//           setupTabBar()
+//        }
+        setupTabBar()
     }
     
     @objc func passForgottenAction(){
@@ -258,9 +259,9 @@ class StartScreen: UIViewController {
         
         
         let t1 =  HomeController()
-        let t2 = MyAccountController()
+        let t2 = Search()
         let t3 = SettingController()
-        let t4 = HelpController()
+        let t4 = ReelsController()
         let t5 =  AccountController()
         
         

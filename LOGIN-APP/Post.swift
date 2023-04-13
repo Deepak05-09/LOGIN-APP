@@ -75,8 +75,9 @@ class Post: UITableViewCell {
         
         followButton.configuration = .filled()
         followButton.setTitle("Follow", for: .normal)
-        followButton.setTitle("Following", for: .selected)
-        followButton.tintColor = .lightGray
+        followButton.tintColor = .blue
+        
+        followButton.addTarget(self, action: #selector(followClicked(_:)), for: .touchUpInside)
     }
     
     func setUpMiddleView(){
@@ -118,18 +119,16 @@ class Post: UITableViewCell {
         share.configuration = .borderless()
         save.configuration = .borderless()
         
-        like.configuration?.baseForegroundColor = .black
-        like.setImage(UIImage(systemName: "heart"), for: .normal)
-        like.setImage(UIImage(systemName: "heart.fill"), for: .selected)
+        like.setImage(UIImage(systemName: "heart")?.withTintColor(.black, renderingMode: .alwaysOriginal), for: .normal)
         like.addTarget(self, action: #selector(liked), for: .touchUpInside)
         
-        comment.setImage(UIImage(systemName: "pencil.and.outline"), for: .normal)
+        comment.setImage(UIImage(systemName: "message"), for: .normal)
         comment.configuration?.baseForegroundColor = .black
         
         share.setImage(UIImage(systemName: "paperplane"), for: .normal)
         share.configuration?.baseForegroundColor = .black
         
-        save.setImage(UIImage(systemName: "lasso"), for: .normal)
+        save.setImage(UIImage(systemName: "bookmark"), for: .normal)
         save.configuration?.baseForegroundColor = .black
         
         likes.text = "123,45 likes"
@@ -151,13 +150,24 @@ class Post: UITableViewCell {
     }
     
     @objc func liked(_ sender : UIButton){
-        sender.isSelected = !sender.isSelected
-        like.configuration?.baseForegroundColor = .systemPink
-        like.configuration?.baseBackgroundColor = bottomView.backgroundColor
-        like.resignFirstResponder()
+  
+        
+        if sender.imageView?.image == UIImage(systemName: "heart")?.withTintColor(.black,renderingMode: .alwaysOriginal){
+            sender.setImage(UIImage(systemName: "heart.fill")?.withTintColor(.systemPink,renderingMode: .alwaysOriginal), for: .normal)
+        }
+        else {
+            sender.setImage(UIImage(systemName: "heart")?.withTintColor(.black,renderingMode: .alwaysOriginal), for: .normal)
+        }
     }
     
-    //@objc func following()
+    @objc func followClicked(_ sender : UIButton){
+        if sender.titleLabel?.text == "Follow"{
+            sender.setTitle("Following", for: .normal)
+        }
+        else{
+            sender.setTitle("Follow", for: .normal)
+        }
+    }
     
     func setUpCommentView(){
         bottomView.addSubview(commentView)
