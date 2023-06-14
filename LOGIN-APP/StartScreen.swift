@@ -29,6 +29,12 @@ class StartScreen: UIViewController {
         setUpFrgtPBtn()
         newAccBtn()
         setUpMetaLogo()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(textChanged), name: UITextField.textDidChangeNotification, object: nil)
+    }
+    
+    @objc func textChanged(){
+        print("Text changed ")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -257,9 +263,9 @@ class StartScreen: UIViewController {
     
     func setupTabBar(){
         
-        
+        let serachNc = UINavigationController(rootViewController: Search())
         let t1 =  HomeController()
-        let t2 = Search()
+        let t2 = serachNc
         let t3 = SettingController()
         let t4 = ReelsController()
         let t5 =  AccountController()
@@ -309,8 +315,10 @@ extension StartScreen : UITextFieldDelegate{
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == passwordTF {
-          return  range.location < 20 ? true : false
+        if textField == passwordTF{
+            let random = "abcdefghijklmnopqrstuvwzyz".uppercased()
+            textField.text =  string.uppercased()
+            return false
         }
         return true
     }

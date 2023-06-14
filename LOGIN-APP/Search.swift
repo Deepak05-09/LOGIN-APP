@@ -6,11 +6,28 @@
 //
 
 import UIKit
-import UIKit
 
-@available(iOS 16.0, *)
-@available(iOS 16.0, *)
+
+struct ApiResponse : Codable {
+    let total : Int
+    let total_pages : Int
+    let results : [Result]
+}
+
+struct Result : Codable {
+    let id : String
+    let urls : URLS
+}
+
+struct URLS : Codable {
+    let small : String
+    let full : String
+}
+
 class Search: UIViewController {
+    
+    
+   var results : [Result] = []
 
     private let collectionView = UICollectionView(
         frame: .zero,
@@ -18,30 +35,51 @@ class Search: UIViewController {
         
         
     )
+    let searchBar = UISearchBar()
     let searchController = UISearchController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setSearchController()
+        setSearchBar()
+        setCollectionView()
+//        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressAction(_:)))
+//        collectionView.addGestureRecognizer(gesture)
+      
+    }
+    
+    func setCollectionView(){
         view.addSubview(collectionView)
         collectionView.register(CoustomCell.self, forCellWithReuseIdentifier: CoustomCell.identifier)
-        collectionView.frame = view.bounds
         collectionView.backgroundColor = .white
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         
-//        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressAction(_:)))
-//        collectionView.addGestureRecognizer(gesture)
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
     
-    func setSearchController(){
-        searchController.showsSearchResultsController = true
-        navigationItem.searchController = searchController
-        searchController.becomeFirstResponder()
+    func setSearchBar(){
+        view.addSubview(searchBar)
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.placeholder = "Search here"
+        searchBar.barTintColor = .red
+        searchBar.delegate = self
+        
+        NSLayoutConstraint.activate([
+            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            searchBar.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
     
-    
+   
    static func createLayout()-> UICollectionViewCompositionalLayout {
         //Item
        let item = NSCollectionLayoutItem(
@@ -101,7 +139,26 @@ class Search: UIViewController {
    }
     
     
-    
+    func fetchPhotos(query : String ){
+        let StringUrl = "https://api.unsplash.com/search/photos?page=1&per_page=30&query=\(query)&client_id=WZ3zmr7KXhXD76M1nTpcO1p3zqkw6vzWZ3DhFE_a1Pk"
+        guard let url = URL(string: StringUrl) else { return }
+        
+        let task = URLSession.shared.dataTask(with: url){ [weak self] data ,_,error in
+            guard let data = data , error == nil else { return }
+            
+            do {
+                let jsonResult = try JSONDecoder().decode(ApiResponse.self, from: data)
+                DispatchQueue.main.async {
+                    self?.results = jsonResult.results
+                    self?.collectionView.reloadData()
+                }
+                
+            }catch {
+                print(error)
+            }
+        }
+        task.resume()
+    }
    
     @objc func longPressAction(_ gesture : UILongPressGestureRecognizer){
        
@@ -126,15 +183,29 @@ class Search: UIViewController {
 //    }
 }
 
+extension Search : UISearchBarDelegate{
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let text = searchBar.text {
+            results = []
+            collectionView.reloadData()
+            fetchPhotos(query: text)
+        }
+    }
+}
+
 extension Search : UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 300
+        return results.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let  imageUrl = results[indexPath.row].urls.full
+        print(imageUrl)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CoustomCell.identifier, for: indexPath) as! CoustomCell
+        cell.configure(with: imageUrl)
         return cell
     }
     
@@ -145,13 +216,15 @@ extension Search : UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        print("selected")
+        
         collectionView.deselectItem(at: indexPath, animated: true)
         let cell = collectionView.cellForItem(at: indexPath) as! CoustomCell
         
         let detailView = DetailViewController()
         detailView.setImage(image: cell.imageView.image!)
         
-        //let nc = UINavigationController(rootViewController: detailView )
+       // let nc = UINavigationController(rootViewController: detailView )
         navigationController?.pushViewController(detailView, animated: true)
     }
     

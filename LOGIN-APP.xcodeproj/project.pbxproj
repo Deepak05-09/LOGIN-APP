@@ -23,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		078568CE2A39D183009E2C30 /* LOGIN-APP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "LOGIN-APP.entitlements"; sourceTree = "<group>"; };
 		07D75CCC29AF85EC0082A4A5 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		07D75CCE29AF86290082A4A5 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		07E3BC0229E6B968008B8EFB /* ReelsVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelsVideo.swift; sourceTree = "<group>"; };
@@ -70,6 +71,7 @@
 		1BD45B9B299D0070004A624C /* LOGIN-APP */ = {
 			isa = PBXGroup;
 			children = (
+				078568CE2A39D183009E2C30 /* LOGIN-APP.entitlements */,
 				1BD45B9C299D0070004A624C /* AppDelegate.swift */,
 				1BD45B9E299D0070004A624C /* SceneDelegate.swift */,
 				1BD45BA0299D0070004A624C /* StartScreen.swift */,
@@ -305,6 +307,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "LOGIN-APP/LOGIN-APP.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -323,6 +326,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Deepak.LOGIN-APP";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -334,6 +340,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "LOGIN-APP/LOGIN-APP.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -352,6 +359,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Deepak.LOGIN-APP";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
